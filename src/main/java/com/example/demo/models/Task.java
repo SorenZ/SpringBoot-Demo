@@ -1,17 +1,33 @@
-package com.example.demo;
+package com.example.demo.models;
 
+import javax.persistence.*;
+
+@Entity(name = "task")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     private String name;
+    
     private String description;
+    
     private boolean completed;
+    
+    private int rate;
 
     public Task() {
     }
 
     public Task(int id, String name, String description, boolean completed) {
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.completed = completed;
+    }
+
+    public Task(String name, String description, boolean completed) {
         this.name = name;
         this.description = description;
         this.completed = completed;
@@ -49,5 +65,11 @@ public class Task {
         this.completed = completed;
     }
 
-    // getters and setters
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
 }
